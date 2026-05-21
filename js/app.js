@@ -71,6 +71,7 @@ function renderDeck() {
   result.textContent = "";
   resetBtn.hidden = true;
   shuffleBtn.hidden = false;
+  shuffleBtn.textContent = "Mélanger & piocher";
 
   people.forEach((person) => {
     const card = document.createElement("div");
@@ -111,6 +112,12 @@ function drawWinner() {
   shuffleBtn.disabled = true;
   result.textContent = "Mélange en cours…";
 
+  // Réinitialise l'état d'un tirage précédent (cartes face cachée, sans gagnant).
+  deck.classList.remove("revealed");
+  Array.from(deck.children).forEach((card) =>
+    card.classList.remove("flipped", "winner")
+  );
+
   // Réordonne visuellement les cartes pour l'effet de battage.
   shuffled(Array.from(deck.children)).forEach((card) => deck.appendChild(card));
   deck.classList.add("shuffling");
@@ -133,7 +140,8 @@ function drawWinner() {
       result.textContent = `🎉 ${name} commence !`;
     }, reduceMotion ? 0 : 450);
 
-    shuffleBtn.hidden = true;
+    shuffleBtn.disabled = false;
+    shuffleBtn.textContent = "Re-mélanger";
     resetBtn.hidden = false;
     isDrawing = false;
   }, delay);
