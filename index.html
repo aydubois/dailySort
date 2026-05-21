@@ -3,31 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dailySort</title>
+  <title>dailySort — Qui commence ?</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="app-header">
     <h1>dailySort</h1>
-    <p class="app-tagline">Organise tes tâches du jour</p>
+    <p class="app-tagline">Mélange les cartes, pioche qui commence.</p>
   </header>
 
   <main class="app-main">
-    <form id="task-form" class="task-form" autocomplete="off">
-      <label for="task-input" class="visually-hidden">Nouvelle tâche</label>
-      <input
-        type="text"
-        id="task-input"
-        class="task-input"
-        placeholder="Ajouter une tâche…"
-        required
-      >
-      <button type="submit" class="btn-add">Ajouter</button>
-    </form>
+    <!-- Gestion des participants -->
+    <section class="panel" aria-labelledby="people-title">
+      <h2 id="people-title" class="panel-title">Participants</h2>
 
-    <ul id="task-list" class="task-list" aria-live="polite"></ul>
+      <form id="person-form" class="person-form" autocomplete="off">
+        <label for="person-input" class="visually-hidden">Nom du participant</label>
+        <input
+          type="text"
+          id="person-input"
+          class="person-input"
+          placeholder="Ajouter un nom…"
+          maxlength="24"
+          required
+        >
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+      </form>
 
-    <p id="empty-state" class="empty-state">Aucune tâche pour le moment.</p>
+      <ul id="people-list" class="people-list" aria-live="polite"></ul>
+      <p id="people-empty" class="muted">Ajoute au moins 2 participants.</p>
+    </section>
+
+    <!-- Tirage -->
+    <section class="panel" aria-labelledby="draw-title">
+      <h2 id="draw-title" class="panel-title">Tirage</h2>
+
+      <div class="actions">
+        <button id="shuffle-btn" class="btn btn-accent" type="button" disabled>
+          Mélanger &amp; piocher
+        </button>
+        <button id="reset-btn" class="btn btn-ghost" type="button" hidden>
+          Recommencer
+        </button>
+      </div>
+
+      <p id="result" class="result" role="status" aria-live="assertive"></p>
+
+      <div id="deck" class="deck" aria-hidden="true"></div>
+    </section>
   </main>
 
   <script src="js/app.js"></script>
