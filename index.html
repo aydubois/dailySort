@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dailySort</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>dailySort</h1>
+    <p class="app-tagline">Organise tes tâches du jour</p>
+  </header>
+
+  <main class="app-main">
+    <form id="task-form" class="task-form" autocomplete="off">
+      <label for="task-input" class="visually-hidden">Nouvelle tâche</label>
+      <input
+        type="text"
+        id="task-input"
+        class="task-input"
+        placeholder="Ajouter une tâche…"
+        required
+      >
+      <button type="submit" class="btn-add">Ajouter</button>
+    </form>
+
+    <ul id="task-list" class="task-list" aria-live="polite"></ul>
+
+    <p id="empty-state" class="empty-state">Aucune tâche pour le moment.</p>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
